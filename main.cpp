@@ -50,13 +50,14 @@ int main(int argc,char *argv[]){
     // the only argument is the prefix for the topics
     // we wish to rebroadcast to OSC
     
-    if(argc<2){
-        fprintf(stderr,"Usage: diamond2osc <topicprefix>\n");
+    if(argc<3){
+        fprintf(stderr,"Usage: diamond2osc <topicprefix> <port>\n");
         exit(1);
     }
     const char *prefix = argv[1];
+    const char *port = argv[2];
     
-    lo = lo_address_new(NULL,NULL);
+    lo = lo_address_new(NULL,port);
     
     try {
         init();
